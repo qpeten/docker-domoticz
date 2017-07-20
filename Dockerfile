@@ -26,4 +26,4 @@ USER $USER
 
 VOLUME /config
 
-CMD /src/domoticz/domoticz -dbase=/config/domoticz.db -log=/config/log/domoticz.log -www 8080 -sslwww 0
+CMD /src/domoticz/domoticz -userdata /config -dbase /config/domoticz.db -log /config/log/domoticz.log -www 8080 -sslwww 0
