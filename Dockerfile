@@ -14,7 +14,7 @@ RUN apt-get install -qy \
 RUN useradd --no-create-home -g users -G dialout --uid $UID $USER
 
 WORKDIR "/src/domoticz"
-RUN chown $USER:$USER /src/domoticz
+RUN chown $USER /src/domoticz
 
 RUN apt-get autoremove -qy wget && \
     rm -rf /var/lib/apt/lists/*
