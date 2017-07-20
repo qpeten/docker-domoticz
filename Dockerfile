@@ -11,9 +11,10 @@ RUN apt-get install -qy \
         build-essential nano cmake git libboost-dev libboost-thread-dev libboost-system-dev \
 	libsqlite3-dev curl libcurl4-openssl-dev libssl-dev libusb-dev zlib1g-dev python3-dev
 
-WORKDIR "/src/domoticz"
-
 RUN useradd --no-create-home -g users -G dialout --uid $UID $USER
+
+WORKDIR "/src/domoticz"
+RUN chown $USER:$USER /src/domoticz
 
 RUN apt-get autoremove -qy wget && \
     rm -rf /var/lib/apt/lists/*
