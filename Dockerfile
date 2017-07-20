@@ -13,16 +13,16 @@ RUN apt-get install -qy \
 
 WORKDIR "/src/domoticz"
 
-RUN git clone https://github.com/domoticz/domoticz.git .
-RUN cmake -DCMAKE_BUILD_TYPE=Release .
-RUN make -j $MAKE_CORES
-
 RUN useradd --no-create-home -g users -G dialout --uid $UID $USER
 
 RUN apt-get autoremove -qy wget && \
     rm -rf /var/lib/apt/lists/*
 
 USER $USER
+
+RUN git clone https://github.com/domoticz/domoticz.git .
+RUN cmake -DCMAKE_BUILD_TYPE=Release .
+RUN make -j $MAKE_CORES
 
 VOLUME /config
 
